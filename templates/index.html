@@ -1,0 +1,445 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,400;1,600&family=Sora:wght@200;300;400&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    background: f1fbff;
+}
+.navbar nav {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.navbar-light .navbar-brand{
+    color: #000;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+
+.navbar-light .navbar-brand:focus,
+.navbar-Light .navbar-brand:hover{
+color: #000;
+}
+.navbar-light .navbar-nav .navbar-link{
+    font-size: 14px;
+    font-weight: 700;
+color: #000;
+}
+.w-100{
+height: 100vh;
+}
+
+:root{
+    --primary:#0d6efd;
+    --dark:#21252f;
+    --body:#888;
+    --box-shadow:0 8px 24px  rgba(0,0,0,1);
+}
+body{
+    font-family: 'sora',sans-serif;
+    line-height: 1.7;
+    color: var(--body);
+}
+h1,h2,h3,h4,h5,h6,
+.display-4{
+    color: var(--dark);
+    font-weight: 700;
+}
+a{
+    color: var(--dark);
+text-decoration: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.hero{
+   
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 2;
+}
+.hero::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(21, 20, 51, 0.8);
+    z-index: -1;
+}
+
+section{
+    padding-top: 120px ;
+    padding-bottom: 120px;
+}
+.card-effect{
+    box-shadow: var(--box-shadow);
+    background-color: #fff;
+    padding: 25px;
+    transition: all 0.5s ease;
+}
+.card-effect:hover{
+    box-shadow: none;
+    transform: translate(5px);
+}
+.iconbox{
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: #fff;
+    font-size: 32px;
+    border-radius: 100px;
+    flex: none;
+
+}
+
+.col-img{
+  background-image: url("/static/images/service.jpg");
+  background-position: center;
+    background-size: cover;
+    z-index: 2;
+    min-height: 500px;
+}
+
+.project{
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.project .overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21,20,51,0.8);
+  padding: 30px;
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+.project img{
+  transition: all 0.4s ease;
+}
+.project:hover .overlay{
+  opacity: 1;
+}
+.project:hover img{
+  transform: scale(1.1);
+}
+
+.footer-top{
+  padding-bottom: 90px;
+  padding: 90px;
+  background-color: var(--dark);
+}
+.footer-top a{
+  color: var(--body);
+}
+.logo{
+  font-size: 35px;
+  font-weight:500;
+}
+
+</style>
+
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg py-3 navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}"><span class="text-warning">Career</span> Plus</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sign Up
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'employer' %}">Employer</a></li>
+              <li><a class="dropdown-item" href="{% url 'employee' %}">Employee</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a class="btn btn-primary ms-lg-3" aria-current="page" href="{% url 'signin' %}">SignIn</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--hero-->
+  <div class="hero vh-100 d-flex align-items-center" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto text-center">
+                <h1 class="display-4 text-white">Build your dream Career </h1>
+                <p class="text-white">
+                  Find a job/ internship that suits you and start your career ! 
+                </p>
+                <a href="{% url 'signin' %}" class="btn me-3 btn-primary">LogIn</a>
+                <a href="#" class="btn btn-outline-light">Get start</a>
+            </div>
+        </div>
+    </div>
+  </div>
+<!--section-->
+<section id="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h6 class="text-primary">DOMAINS</h6>
+                <h1>List of Domains</h1>
+                <p>Choose where you want to work in!</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-sm-6">
+                <div class="Service card-effect">
+                    <div class="iconbox">
+                        <i class='bx bxs-cloud-rain'></i>
+                    </div>
+                    <h5 class="mt-4 mb-2">Cloud Tech</h5>
+                    <p>All comapanies focused on cloud technology</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="Service card-effect">
+                  <div class="iconbox">
+                    <i class='bx bx-data'></i>
+                  </div>
+                  <h5 class="mt-4 mb-2">Programming with python</h5>
+                  <p>All comapanies focused on python.</p>
+              </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="Service card-effect">
+                <div class="iconbox">
+                  <i class='bx bxl-react'></i>
+                </div>
+                <h5 class="mt-4 mb-2">Full stack Developer</h5>
+                <p>All comapanies focused on Full Stack</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="Service card-effect">
+              <div class="iconbox">
+                <i class='bx bxl-google'></i>
+              </div>
+              <h5 class="mt-4 mb-2">Cyber Security</h5>
+              <p>All comapanies focused on Cyber security</p>
+          </div>
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <div class="Service card-effect">
+            <div class="iconbox">
+              <i class='bx bxl-c-plus-plus' ></i>
+            </div>
+            <h5 class="mt-4 mb-2">Artificial Intelligence</h5>
+            <p>All comapanies focused on AI & ML</p>
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <div class="Service card-effect">
+          <div class="iconbox">
+            <i class='bx bxl-tux' ></i>
+          </div>
+          <h5 class="mt-4 mb-2">Core Engineering Domains</h5>
+          <p>All comapanies focused on Core Engineering</p>
+      </div>
+  </div>
+        </div>
+    </div>
+</section>
+
+<!--Features-->
+<section class="row w-100" id="features"> 
+  <div class="col-lg-6 col-img"></div>
+    <div class="col-lg-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <h6 class="text-primary text-center">WHY TO CHOOSE US</h6>
+            <h1>Best solution for your carrer</h1>
+            <p>We provide you the best solutions for newly posted jobs & internships. We show the newest updates daily so that you can find your dream role and apply for it. We also recommend your resumes and applications to the companies for you to conquer the role better..!!! </p>
+              <div class="features d-flex mt-5">
+              <div class="iconbox me-3">
+                <i class='bx bxs-like'></i>
+              </div>
+             <div>
+              <h5>We provide full consultation</h5>
+              <p>we offer consultations to all prospective clients.</p>
+             </div>
+          </div>
+          <div class="features d-flex mt-5">
+            <div class="iconbox me-3">
+              <i class='bx bxs-heart' ></i>
+            </div>
+           <div>
+            <h5>We are experts in Career Guidence</h5>
+            <p>This career decision then results in their social, financial and emotional well-being throughout.</p>
+           </div>
+        </div>
+        <div class="features d-flex mt-5">
+          <div class="iconbox me-3">
+            <i class='bx bxs-cog' ></i>
+          </div>
+         <div>
+          <h5>Excellent Services</h5>
+          <p>Our service are very high enough to your best career and placment</p>
+         </div>
+      </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+    <!--cards-->
+    <section id="services">
+      <div class="container-fluid">
+        <div class="row mb-5">
+          <div class="co1-md-8 mx-auto text-center">
+            <h6 class="text-primary">COMPANIES</h6>
+            <h1>Popular Companies</h1>
+            <p>Choose from the best world class facilities providing companies and apply for the perfect roles!...</p>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-lg-4 col-sm-6">
+              <div class="project">
+                <img src="{% static 'images/web.png' %}" alt="...">
+                <div class="overlay">
+                  <div>
+                    <h4 class="text-white">Job Role:</h4>
+                  <h6 class="text-white">Web Designing</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="project">
+                <img src="{% static 'images/mobile.png' %}" alt="...">
+                <div class="overlay">
+                  <div>
+                    <h4 class="text-white">Job Role:</h4>
+                  <h6 class="text-white">Android Developer</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="project">
+                <img src="{% static 'images/sec.png' %}" alt="...">
+                <div class="overlay">
+                  <div>
+                    <h4 class="text-white">Job Role:</h4>
+                  <h6 class="text-white">Security Developer</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="project">
+                <img src="{% static 'images/dataanalyst.jpg' %}" alt="...">
+                <div class="overlay">
+                  <div>
+                    <h4 class="text-white">Job Role:</h4>
+                  <h6 class="text-white">Data Analyst</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="project">
+                <img src="{% static 'images/softdev.jpg' %}" alt="...">
+                <div class="overlay">
+                  <div>
+                    <h4 class="text-white">Job Role:</h4>
+                  <h6 class="text-white">Software Developer</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="project">
+                <img src="{% static 'images/cloud.png' %}" alt="...">
+                <div class="overlay">
+                  <div>
+                    <h4 class="text-white">Job Role:</h4>
+                  <h6 class="text-white">CLoud Data Expert</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!--End-->
+<footer>
+  <div class="footer-top">
+    <div class="container">
+      <a class="logo text-white"><span class="text-warning">Career</span>Plus</a>
+      <div class="row">
+        <div class="col-md-2">
+          <h5 class="text-white">Consultancy Services</h5>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Domains</a></li>
+            <li><a href="#">Companies</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h5 class="text-white">More</h5>
+          <ul>
+            <li><a href="#">FAQ's</s></a></li>
+            <li><a href="#">Privacy & Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h5 class="text-white">Company</h5>
+          <ul>
+            <li>Address: Koneru Laxmai educational foundation,Green fiels,Vaddeswaram,Vijawada.</li>
+            <li>Email: 2100090083@kluniversity.in</li>
+            <li>Phone: (603) 555-0123.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+{% endblock %}

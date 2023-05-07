@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<h1>Dashboard</h1>
+<a class="btn btn-primary ms-lg-3" aria-current="page" href="{% url 'signin' %}">Logout</a>
+
+{{ redirect_to_login_immediatley }}
+
+{% endblock %}
